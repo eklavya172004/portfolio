@@ -12,7 +12,7 @@ import CanvasLoader from "../Loader";
 
 const Ball = (props) => {
   const [decal] = useTexture([props.imgUrl]);
-  const meshRef = useRef();
+  const meshRef = useRef(null); // Fix 1: Provide null as initial value
   const [hovered, setHovered] = useState(false);
 
   // Animate the ball rotation based on hover state
@@ -41,7 +41,7 @@ const Ball = (props) => {
         scale={hovered ? 3 : 2.75}
         onPointerOver={() => setHovered(true)}
         onPointerOut={() => setHovered(false)}
-        style={{ cursor: 'pointer' }}
+        // Fix 2: Removed style prop as it's not supported on mesh elements
       >
         <icosahedronGeometry args={[1, 1]} />
         <meshStandardMaterial
@@ -55,7 +55,7 @@ const Ball = (props) => {
           rotation={[2 * Math.PI, 0, 6.25]}
           scale={1}
           map={decal}
-          flatShading
+          // Fix 3: Removed flatShading from Decal as it's not a valid prop
         />
       </mesh>
     </Float>
@@ -65,7 +65,7 @@ const Ball = (props) => {
 const BallCanvas = ({ icon }) => {
   return (
     <Canvas
-      frameloop='always' // Changed from 'demand' to 'always' for smooth animations
+      frameloop='always'
       dpr={[1, 2]}
       gl={{ preserveDrawingBuffer: true }}
     >
@@ -73,7 +73,7 @@ const BallCanvas = ({ icon }) => {
         <OrbitControls 
           enableZoom={false} 
           enablePan={false}
-          enableRotate={false} // Disable manual rotation to prevent conflicts
+          enableRotate={false}
         />
         <Ball imgUrl={icon} />
       </Suspense>

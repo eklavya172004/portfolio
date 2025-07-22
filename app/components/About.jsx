@@ -18,6 +18,7 @@ const ServiceCard = ({ index, title, icon }) => (
             variants={fadeIn("right", "spring", index * 0.5, 0.75)} 
             initial="hidden"
             animate="show"
+            // transition={{ ease: "easeIn" }}
             className="w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card"
         >
             <div className="bg-[#151030] rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col">
@@ -42,6 +43,7 @@ const About = () => (
             variants={fadeIn("", "spring", 0.1, 1)}
             initial="hidden"
             animate="show"
+            // transition={{ ease: "easeIn" }}
             className="mt-4 text-[#aaa6c3] text-[17px] max-w-3xl leading-[30px]"
         >
             I am a passionate software developer with a keen interest in building innovative solutions. My journey in the tech world has been driven by a desire to create impactful applications that enhance user experiences and solve real-world problems. With a strong foundation in programming languages and frameworks, I thrive on challenges and continuously seek opportunities to learn and grow in this ever-evolving field.
