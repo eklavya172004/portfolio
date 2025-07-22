@@ -1,3 +1,5 @@
+import { easeIn } from "framer-motion";
+
 export const textVariant = (delay) => {
   return {
     hidden: {
@@ -31,6 +33,9 @@ export const fadeIn = (direction, type, delay, duration) => {
         type: type,
         delay: delay,
         duration: duration,
+        // ✅ Corrected Line:
+        // Use the 'ease' property and assign the string value directly.
+        // ease: 'easeInOut', 
       },
     },
   };
